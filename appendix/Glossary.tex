@@ -1,0 +1,23 @@
+\documentclass[class=article, crop=false]{standalone}
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+\usepackage{enumitem} % Format list spacing 
+
+\begin{document}
+
+\subsection{Glossary}
+The following terms are used throughout this Whitepaper:
+\begin{itemize}[topsep=0pt, itemsep=3pt,leftmargin=16pt]
+    \item[] \term{AdvancedPipeCall} - A type of \term{Pipecall} that makes a function call with a  static taget address and both static and dynamic \code{callData};
+    \item[] \term{Clipboard} - A framework to \term{Copy} return values stored as \code{returnData} from any \term{AdvancedPipeCalls} that have already been executed and \term{Paste} them into the \code{callData} of the next \term{AdvancedPipeCall}, in a customizable manner;
+    \item[] \term{Copy} - Add \code{bytes32 pasteParams} to the \term{Clipboard};
+    \item[] \term{Deposit} - Assets in the \term{Silo};
+    \item[] \term{Depot} - A wrapper for \term{Pipeline} that supports (1) loading Ether and non-Ether assets into \term{Pipeline}, (2) using them and (3) unloading them from \term{Pipeline}, in a single transaction;
+    \item[] \term{Farm} - Where Beanstalk \term{Farm} balances are stored; 
+    \item[] \term{Paste} - Add \code{bytes32 pasteParams} from the \term{Clipboard} to \code{callData} of the next \term{AdvancedPipeCall} to be executed;
+    \item[] \term{Pipe} - \term{Pipeline's} functions that execute one or more \term{PipeCalls} or \term{AdvancedPipeCalls};
+    \item[] \term{PipeCall} - A struct that specifies a function call to be executed by \term{Pipeline}. 
+    \item[] \term{Pipeline} - A standalone contract that creates a sandbox to execute an arbitrary composition of valid actions within the EVM in a single transaction using Ether; and
+    \item[] \term{Silo} - The Beanstalk DAO.
+\end{itemize}
+\end{document}

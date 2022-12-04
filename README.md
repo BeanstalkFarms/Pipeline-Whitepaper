@@ -1,3 +1,5 @@
+<img src="https://github.com/BeanstalkFarms/Beanstalk-Brand-Assets/blob/main/pipeline/pipeline.svg" alt="Pipeline logo" align="right" width="120" />
+
 # Pipeline Whitepaper
 
 LaTeX for the Pipeline Whitepaper.

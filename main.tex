@@ -57,7 +57,6 @@
 
 % Section
 \renewcommand*{\cftsecnumwidth}{2em} % Increase space section from numbers on left
-% \setlength{\cftbeforesecskip}{3pt} % Messes with section TOC length
 
 % Subsection
 \cftsetindents{subsection}{1em}{3em} % space between numbers and toc subsections
@@ -82,7 +81,6 @@
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
 
 % Abstract
 % Make abstract justified
@@ -142,18 +140,8 @@
 \newcommand{\rowm}[1]{\xrowht{26.667pt}} % Command to set row height for cell with 2 rows
 \newcommand{\rows}[1]{\xrowht{13.333pt}} % Command to set row height for cell with 1 rows
 
-% Bean symbols
-\newcommand{\BeanCover}{\includesvg[scale=2.2]{./logos/black-bean.svg}} % Logo on cover page
-
-% Bean symbols
+% Symbols
 \newcommand{\PipelineCover}{\includesvg[scale=3.0]{./logos/pipeline.svg}} % Logo on cover page
-
-\newcommand{\Bean}{\includesvg[scale=0.23]{./logos/bean.svg}} % Bean used throughout the paper in text form
-\newcommand{\bean}{\includesvg[scale=0.17]{./logos/microbean-wide.svg}} % Bean used in formulas - micro bean wide
-
-\newcommand{\tinybean}{\includesvg[scale=0.13]{./logos/microbean-wide.svg}} % Bean used in formulas - micro bean wide
-
-\newcommand{\lambdabean}{\includesvg[scale=0.17]{./logos/microbean.svg}} % Bean used in formulas for lambda superscript - micro bean
 
 % List Key
 \SetEnumitemKey{midsep}{topsep=0pt, itemsep=3pt} % Itemize key
@@ -184,12 +172,6 @@
                 \href{mailto:beanstalk.publius@protonmail.com}{\normalsize{beanstalk.publius@protonmail.com}} & \href{mailto:silochad@protonmail.com}{\normalsize{silochad@protonmail.com}}
             \end{tabular}
         \end{center}
-
-        
-        % \large{Publius and Silo Chad}
-            
-        % \vspace{-0.25cm}
-        % \normalsize{beanstalk.publius@protonmail.com, silochad@protonmail.com}
         
         \vspace{-0.25cm}
         \normalsize{\href{https://evmpipeline.org/}{evmpipeline.org}}
@@ -198,10 +180,10 @@
         \footnotesize{Published:} \normalsize{November 16, 2022}
         
         \vspace{-0.25cm}
-        \footnotesize{Modified:} \normalsize{August 24, 2023}
+        \footnotesize{Modified:} \normalsize{November 17, 2023}
         
         \vspace{-0.25cm}
-        \footnotesize{Whitepaper Version:} {\normalsize{1.0.3}}
+        \footnotesize{Whitepaper Version:} {\normalsize{1.0.4}}
         
         \vspace{-0.25cm}
         \footnotesize{Code Version:} {\normalsize{1.0.1}}{\fref{github.com/BeanstalkFarms/Pipeline}}
@@ -224,7 +206,6 @@
 \newpage
 
 % TOC formatting
-% \addtocontents{toc}{\protect\enlargethispage{20mm}} % TOC margins
 \thispagestyle{empty} % Hide TOC page numbering 
 \addtocontents{toc}{\protect\thispagestyle{empty}} % Allow hiding both TOC page numbers
 
@@ -233,9 +214,6 @@
 {\large\tableofcontents} % Compile TOC with large font
 \cleardoublepage
 \pagenumbering{arabic}
-
-% \thispagestyle{empty} % Hide TOC page numbering
-% \addtocontents{toc}{\protect\thispagestyle{empty}} % Allow hiding both TOC page numbers
 
 \newpage
 \setcounter{page}{3} % Begin page numbering
@@ -297,7 +275,7 @@ In order to safely use \term{Pipeline}, users must (1) load \term{Pipeline} with
     struct AdvancedPipeCall {
         address target;
         bytes data;
-        bytes clipboard; // See Section 5 (UPDATE LINK)
+        bytes clipboard; // See Section 5
     }
     \end{lstlisting}
 
@@ -385,9 +363,7 @@ The first byte of \term{Clipboard} defines its \code{Type}, which specifies the 
 \end{itemize}
 
 \subsection{Ether Usage}
-The second byte of \term{Clipboard} defines the \code{Use Ether Flag}, which specifies whether to include Ether in the \term{AdvancedPipeCall}. The \code{Use Ether Flag} is either \code{0x00}, \code{0x01} or \code{0x02}.
-
-The \term{Clipboard} \code{Use Ether Flag} is defined in the second \code{byte} of \term{Clipboard}. It is either \code{0x00} or \code{0x01}. 
+The second byte of \term{Clipboard} defines the \code{Use Ether Flag}, which specifies whether to include Ether in the \term{AdvancedPipeCall}. The \code{Use Ether Flag} is either \code{0x00} or \code{0x01}.
 
 \begin{itemize}
     \item \textbf{\code{0x00}} - Do not send Ether in the \term{AdvancedPipeCall}.
@@ -416,7 +392,7 @@ The \term{Clipboard} \code{Use Ether Flag} is defined in the second \code{byte} 
 \section{Risk}
 There are numerous risks associated with \term{Pipeline} and \term{Depot}. This is not an exhaustive list.
 
-The \term{Pipeline}, \term{Depot} and \term{Clipboard} code bases are novel. Neither has been tested in the “real world” prior to their initial deployment. The open source nature of \term{Pipeline} and \term{Depot} means that others can take advantage of any bugs, flaws or deficiencies in them.
+The \term{Pipeline}, \term{Depot} and \term{Clipboard} code bases are novel. None have been tested in the “real world” prior to their initial deployment. The open source nature of \term{Pipeline} and \term{Depot} means that others can take advantage of any bugs, flaws or deficiencies in them.
 
 The majority of known risks associated with \term{Pipeline} are from misuse:
 

@@ -180,10 +180,10 @@
         \footnotesize{Published:} \normalsize{November 16, 2022}
         
         \vspace{-0.25cm}
-        \footnotesize{Modified:} \normalsize{November 17, 2023}
+        \footnotesize{Modified:} \normalsize{July 29, 2024}
         
         \vspace{-0.25cm}
-        \footnotesize{Whitepaper Version:} {\normalsize{1.0.4}}
+        \footnotesize{Whitepaper Version:} {\normalsize{1.0.5}}
         
         \vspace{-0.25cm}
         \footnotesize{Code Version:} {\normalsize{1.0.1}}{\fref{github.com/BeanstalkFarms/Pipeline}}
@@ -359,7 +359,7 @@ The first byte of \term{Clipboard} defines its \code{Type}, which specifies the 
 \begin{itemize}
     \item \textbf{\code{0x00} - Basic function call:} no bytes are \term{Pasted} (\term{i.e.}, a static function call).
     \item \textbf{\code{0x01} - 1 \code{bytes32} \term{Pasting} operation:} 1 \code{bytes32} is \term{Pasted} from a previous \term{AdvancedPipeCall's} \code{returnData}. 1 \code{pasteParams} are the first 32 bytes of the \term{Clipboard}.
-    \item \textbf{\code{0x02} - n \code{bytes32} \term{Pasting} operations:} n \code{bytes32} are \term{Pasted} from previous \term{AdvancedPipeCalls'} \code{returnData}. Bytes 3 through 31 are left empty. Bytes 32 through 32 * (n + 2) are a \code{bytes32[]}, where each \code{bytes32} are the \code{pasteParams} for a given byte \term{Paste} operation.
+    \item \textbf{\code{0x02} - n \code{bytes32} \term{Pasting} operations:} n \code{bytes32} are \term{Pasted} from previous \term{AdvancedPipeCalls'} \code{returnData}. Bytes 2 through 31 are left empty, bytes 32 through 63 contain \code{pasteParams.location} and bytes 64 through 95 contain \code{pasteParams.length}. Bytes 96 through 96 + 32 * n are a \code{bytes32[]}, where each \code{bytes32} are the \code{pasteParams} for a given byte \term{Paste} operation.
 \end{itemize}
 
 \subsection{Ether Usage}
@@ -380,9 +380,12 @@ The second byte of \term{Clipboard} defines the \code{Use Ether Flag}, which spe
     \item \code{pasteIndex} - bytes 22 - 31 specify the byte index of where to \term{Paste} onto the \code{callData} of the next \term{AdvancedPipeCall} (\term{e.g.}, \code{0x0000000024} \term{Pastes} onto the 0th parameter of the next \term{AdvancedPipeCall's} \code{callData}, \code{0x0000000044} \term{Pastes} onto the 1st parameter, etc.). 
 \end{itemize}
 
+\newpage
+
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=.89]{Figure2}
+    \hspace*{-8mm} 
+    \includegraphics[scale=.29]{Figure2}
     % \vspace*{-5mm}
     \caption{Clipboard}
     \label{fig 2}
